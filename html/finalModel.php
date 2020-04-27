@@ -122,7 +122,7 @@ class finalModel {
         $email = $mysqli->real_escape_string($_POST['email']);
         $password = $mysqli->real_escape_string($_POST['password']);
         
-        $query = "SELECT * FROM Users WHERE email = ?";
+        $query = $mysqli->prepare("SELECT * FROM Users WHERE email = ?");
         $query->bind_param("s", $email);
         $query->execute();
         
